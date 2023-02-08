@@ -1,0 +1,63 @@
+<h1 class="h1 text-center mb-0">Q6</h1>
+<div class="row justify-content-center align-items-center h-100 p-0 m-0">    
+    <div class="col-8">
+        <fieldset class="border rounded p-3">
+            <legend class="float-none w-auto">Paragraph</legend>
+            <label>Enter Paragraph*</label>
+            <textarea class="form-control" style="text-align:justify;" id="paragraph" rows="17" placeholder="write your paragraph here.">
+Terrance knew that sometimes it was simply best to stay out of it. He kept repeating this to himself as he watched the scene unfold. He knew that nothing good would come of him getting involved. It was far better for him to stay on the sidelines and observe. He kept yelling this to himself inside his head as he walked over to the couple and punched the man in the face. 
+I recollect that my first exploit in squirrel-shooting was in a grove of tall walnut-trees that shades one side of the valley. I had wandered into it at noontime, when all nature is peculiarly quiet, and was startled by the roar of my own gun, as it broke the Sabbath stillness around and was prolonged and reverberated by the angry echoes.
+I recollect that my first exploit in squirrel-shooting was in a grove of tall walnut-trees that shades one side of the valley. I had wandered into it at noontime, when all nature is peculiarly quiet, and was startled by the roar of my own gun, as it broke the Sabbath stillness around and was prolonged and reverberated by the angry echoes.
+            </textarea>           
+        </fieldset>
+        <div class="mt-2 d-flex justify-content-center">
+            <button class="btn btn-primary m-1 bloop" onclick="process();">Process</button>
+            <button class="btn btn-primary m-1 bloop" onclick="replace();" title="replace word 'a' with 'ComputerScienceDepartmentUniversityofJammu'">Replace</button>
+        </div>
+    </div>
+    <div class="col-4">
+        <fieldset class="rounded border p-3">
+            <legend class="float-none w-auto">Output</legend>
+            <div style="text-align:center;" class="bg-light text-dark p-2 rounded w-100" rows="10" id="output">Output will be displayed here!</div>            
+        </fieldset>
+    </div>
+</div>
+
+<script>
+    function process(){
+        text=document.querySelector("#paragraph").value;       
+        textArr=text.split(" ");
+        
+        longest="";
+        count={};
+        maxCount=0;
+        maxEl="";
+        textArr.forEach(element => {
+                if(element.length>longest.length){
+                    longest=element;
+                }
+                            
+                (count[element]==null)?count[element]=1:count[element]++;            
+
+                if(count[element]>maxCount){
+                    maxCount=count[element];
+                    maxEl=element;
+                }
+        });           
+        console.log(maxEl);
+        document.querySelector("#output").innerHTML=`
+            <div class="w-100">Word : ${maxEl}, Max Occurance : ${maxCount}</div>
+            <div class="w-100">Longest Word : ${longest}, Length : ${longest.length}</div>`;
+    }    
+
+    function replace(){
+        textArr=document.querySelector("#paragraph").value.split(" ");
+
+        text="";
+        textArr.forEach(element => {
+            text+=(element=="a")? "ComputerScienceDepartmentUniversityofJammu " : element+" ";
+        });
+
+        document.querySelector("#paragraph").value=text;
+    }
+</script>

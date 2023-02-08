@@ -1,0 +1,66 @@
+<h1 class="h1 text-center">Q8</h1>
+<div class="row justify-content-center align-items-center h-100 p-5">     
+    <div class="col-8">
+        <fieldset class="border rounded p-3">
+            <legend class="float-none w-auto">Paragraph</legend>
+            <label>Enter Paragraph*</label>
+            <textarea class="form-control" style="text-align:justify;" id="paragraph" rows="16" placeholder="write your paragraph here.">
+Terrance knew that sometimes it was simply best to stay out of it. He kept repeating this to himself as he watched the scene unfold. He knew that nothing good would come of him getting involved. It was far better for him to stay on the sidelines and observe. He kept yelling this to himself inside his head as he walked over to the couple and punched the man in the face. 
+I recollect that my first exploit in squirrel-shooting was in a grove of tall walnut-trees that shades one side of the valley. I had wandered into it at noontime, when all nature is peculiarly quiet, and was startled by the roar of my own gun, as it broke the Sabbath stillness around and was prolonged and reverberated by the angry echoes.
+I recollect that my first exploit in squirrel-shooting was in a grove of tall walnut-trees that shades one side of the valley. I had wandered into it at noontime, when all nature is peculiarly quiet, and was startled by the roar of my own gun, as it broke the Sabbath stillness around and was prolonged and reverberated by the angry echoes.
+            </textarea>           
+        </fieldset>
+        <div class="mt-1 d-flex justify-content-center">
+            <button class="btn btn-primary m-1 bloop" onclick="process();">Process</button>            
+        </div>
+    </div>    
+    <div class="col-4" id="output">
+
+    </div>
+</div>
+<script>
+    function process(){
+        text=document.querySelector("#paragraph").value;        
+        text=text.replace(/,/g ," ");
+        console.log(text);
+        textArr=text.split(" ");
+        chars = ["a","p","r","o","s"];
+        
+        begns={};
+        contns={};
+        text="";
+        textArr.forEach(element => {
+           
+            if(element.match(/^(a|p|r|o|s)/))
+               begns[element]=element;   
+
+            if(element.match(/(a|p|r|s)/gi)){
+                contns[element]=element;                          
+                text+="123CSDEPARTMENT ";
+            }            
+            else{
+                text+=element+" ";
+            }
+
+        });    
+
+        document.querySelector("#paragraph").value=text;
+
+        listbegns="<div class='col text-justify'>\n";
+        for(key in begns)
+            listbegns+=`${begns[key]}, `;        
+        listbegns+="</div>";        
+
+        listcontns="<div class='col text-justify'>\n";
+        for(key in contns)
+            listcontns+=`${contns[key]}, `;
+        listcontns+="</div>";
+
+        document.querySelector("#output").innerHTML=`
+            <div class="row tiny">
+                ${listbegns}                            
+                ${listcontns}                
+            </div>
+        `;
+    }    
+</script>

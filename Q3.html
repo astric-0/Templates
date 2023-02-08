@@ -1,0 +1,63 @@
+<h1 class="h1 text-center">Q3</h1>
+<div class="row justify-content-center align-items-center h-100">    
+    <div class="col-6">        
+        <fieldset class="rounded border p-3 w-75">
+            <legend class="float-none w-auto">Inputs</legend>
+            <div class="row">            
+                <div class="col">
+                    <label>A*</label>
+                    <input type="number" class="form-control" placeholder="value 1" id="A" required/>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <label>B*</label>
+                    <input type="number" class="form-control" placeholder="value 2" id="B" required/>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <label>C*</label>
+                    <input type="number" class="form-control" placeholder="value 3" id="C" required/>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <button class="btn btn-primary btn text-light bloop" title="find greatest" onclick="findGreatest();">Find</button>
+            </div>            
+        </fieldset>       
+    </div> 
+
+    <div class="col-6">
+        <fieldset class="rounded border p-3">
+            <legend class="float-none w-auto">Output</legend>
+            <div class="bg-light text-dark p-2 rounded h4 text-center" id="q3Result">           
+                For NaN (not a number) values are counted as 0 (zero) by default
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<script>
+    function findGreatest(){
+        a = parseInt(document.querySelector("#A").value);
+        b = parseInt(document.querySelector("#B").value);
+        c = parseInt(document.querySelector("#C").value);  
+        checker=false;        
+
+        if(isNaN(a)){
+            a=0;
+            checker=true;
+        }
+        if(isNaN(b)){
+            b=0;
+            checker=true;
+        }
+        if(isNaN(c)){
+            c=0;
+            checker=true;
+        }                    
+
+        greatest = (a>b)? ((a>c)? a : c) : ((b>c)?b:c);
+        document.querySelector("#q3Result").innerHTML=`${greatest}`+ ((checker)?"<br/>NaN encountered":"");
+    }
+</script>

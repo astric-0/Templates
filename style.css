@@ -1,0 +1,28 @@
+.navbar{ height: 100vh; }            
+.navbar .btn-nav:hover{ 
+    transform: scale(1.5); color:white; 
+}
+.btn-nav{
+    outline:none !important; 
+    border:none; box-shadow: none; 
+    background: transparent; 
+    color:white; 
+    margin:2.7vh;
+}
+
+.bloop{ 
+    transition:all 1s; 
+} 
+.bloop:hover{
+    transform: scale(1.2); 
+}  
+
+.teeny-tiny{ 
+    transform: scale(0.7); 
+}  
+.tiny{
+     transform: scale(0.9); 
+}
+.big{ 
+    transform:scale(1.5); 
+}     
